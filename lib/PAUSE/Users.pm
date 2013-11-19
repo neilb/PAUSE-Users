@@ -66,9 +66,68 @@ B<NOTE>: this is very much an alpha release. Any and all feedback appreciated.
 
 PAUSE::Users provides an interface to the C<00whois.xml>
 file produced by the Perl Authors Upload Server (PAUSE).
-The file contains a list of all PAUSE users:
+This file contains a list of all PAUSE users, with some basic information
+about each user.
 
-=head1 FILE FORMAT
+At the moment this module supports a single iterator interface.
+The C<next_user()> method returns an instance of L<PAUSE::Users::User>
+(I know, bit of an odd name).
+
+Here's the simple skeleton for iterating over all PAUSE users:
+
+ my $iterator = PAUSE::Users->new()->user_iterator();
+
+ while (my $user = $iterator->next_user) {
+    # doing something with $user
+ }
+
+The user object supports the following methods:
+
+=over 4
+
+=item id
+
+The user's PAUSE id. For example my PAUSE id is NEILB.
+
+=item fullname
+
+The full name of the user, as they would write it.
+So expect to see Kanji and plenty of other non-ASCII characters here.
+You are UTF-8 clean, right?
+
+=item asciiname
+
+An ASCII version of the user's name. This might be the romaji version
+of a Japanese name, or the fullname without any accents.
+For example, author NANIS has fullname A. Sinan Ünür,
+and asciiname A. Sinan Unur.
+
+=item email
+
+The contact email address for the author, or C<CENSORED> if the
+author specified that their email address should not be shared.
+
+=item has_cpandir
+
+Set to C<1> if the author has a directory on CPAN, and 0 if not.
+This being true means that the author has upload I<something> to CPAN,
+even if they've subsequently deleted it.
+
+=item homepage
+
+The author's homepage, if they've specified one.
+This might be their blog, their employer's home page,
+or any other URL they've chosen to associate with their account.
+
+=item introduced
+
+When the author's PAUSE account was created, specified as
+seconds since the epoch. This may change to being an instance
+of L<DateTime>.
+
+=back
+
+=head1 00whois.xml file format
 
 The meat of the file is a list of C<E<lt>cpanidE<gt>> elements,
 each of which contains details of one PAUSE user:
@@ -92,13 +151,21 @@ each of which contains details of one PAUSE user:
   
  </cpan-whois>
 
+=head1 NOTES
+
+I started off trying a couple of XML modules, but I was surprised at
+how slow they were, and not really iterator-friendly.
+So the current version of the iterator does line-based parsing using
+regexps. You really shouldn't do that, but 00whois.xml is automatically
+generated, follows a well-defined format, which very rarely changes.
+
 =head1 SEE ALSO
 
-L<Parse::CPAN::Whois> is another module that parses 00whois.xml, but you have to download it
-yourself first.
+L<Parse::CPAN::Whois> is another module that parses 00whois.xml,
+but you have to download it yourself first.
 
-L<Parse::CPAN::Authors> is another module for getting information about PAUSE users,
-but based on C<01.mailrc.txt.gz>.
+L<Parse::CPAN::Authors> is another module for getting information about
+PAUSE users, but based on C<01.mailrc.txt.gz>.
 
 L<PAUSE::Permissions>, L<PAUSE::Packages>.
 
