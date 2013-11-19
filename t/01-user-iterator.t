@@ -25,9 +25,9 @@ ok(defined($iterator), 'create user iterator');
 # Construct a string with info
 #-----------------------------------------------------------------------
 my $expected = <<'END_EXPECTED';
-NBERTRAM|Neil Bertram|CENSORED
-NEILB|Neil Bowers|neil@bowers.com
-NHAINER|Neil Hainer|CENSORED
+NBERTRAM|Neil Bertram|CENSORED|0
+NEILB|Neil Bowers|neil@bowers.com|1
+NHAINER|Neil Hainer|CENSORED|0
 END_EXPECTED
 
 my $string = '';
@@ -38,8 +38,10 @@ while (my $user = $iterator->next_user) {
                .$user->fullname()
                .'|'
                .$user->email()
+               .'|'
+               .$user->has_cpandir()
                ."\n";
 }
 
-is($string, $expected, "rendered release details");
+is($string, $expected, "rendered user details");
 

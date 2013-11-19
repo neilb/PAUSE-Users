@@ -2,6 +2,8 @@ Revision history for Perl module PAUSE::Users
 
 0.02 2013-11-18
 
+    - has_cpandir now defaults to 0, as the <has_cpandir> element
+      is only present if it's set to 1.
     - Now we skip entries with type=list, as they're not users they're
       mailing lists. Dropped the 'type' field from PAUSE::Users::User,
       since we're only dealing with one type.
