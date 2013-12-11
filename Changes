@@ -1,5 +1,8 @@
 Revision history for Perl module PAUSE::Users
 
+0.03 2013-12-11
+    - Added =encoding to pod, since I have UTF-8 in the pod
+
 0.02 2013-11-19
 
     - has_cpandir now defaults to 0, as the <has_cpandir> element

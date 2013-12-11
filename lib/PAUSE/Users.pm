@@ -44,6 +44,8 @@ sub BUILD
 
 1;
 
+=encoding utf8
+
 =head1 NAME
 
 PAUSE::Users - interface to PAUSE's users file (00whois.xml)
