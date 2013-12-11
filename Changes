@@ -2,6 +2,7 @@ Revision history for Perl module PAUSE::Users
 
 0.03 2013-12-11
     - Added =encoding to pod, since I have UTF-8 in the pod
+    - Correction in the doc for has_cpandir following a chat with ANDK.
 
 0.02 2013-11-19
 
