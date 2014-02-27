@@ -1,5 +1,9 @@
 Revision history for Perl module PAUSE::Users
 
+0.04 2014-02-27
+    - Added CPAN::Index::API::File::Whois and CPAN::Search::Author
+      to SEE ALSO.
+
 0.03 2013-12-11
     - Added =encoding to pod, since I have UTF-8 in the pod
     - Correction in the doc for has_cpandir following a chat with ANDK.

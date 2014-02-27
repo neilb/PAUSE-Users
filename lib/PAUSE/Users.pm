@@ -170,6 +170,11 @@ but you have to download it yourself first.
 L<Parse::CPAN::Authors> is another module for getting information about
 PAUSE users, but based on C<01.mailrc.txt.gz>.
 
+L<CPAN::Index::API::File::Whois> provides a similar interface to 00whois.xml.
+
+L<CPAN::Search::Author> does a real-time search for CPAN authors
+using L<search.cpan.org|http://search.cpan.org>.
+
 L<PAUSE::Permissions>, L<PAUSE::Packages>.
 
 =head1 REPOSITORY
