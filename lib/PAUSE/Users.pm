@@ -154,6 +154,21 @@ each of which contains details of one PAUSE user:
   
  </cpan-whois>
 
+In addition to all PAUSE users, the underlying file (00whois.xml)
+also contains details of perl.org mailing lists.
+For example, here's the entry for Perl5-Porters:
+
+ <cpanid>
+  <id>P5P</id>
+  <type>list</type>
+  <asciiname>The Perl5 Porters Mailing List</asciiname>
+  <email>perl5-porters@perl.org</email>
+  <info>Mail perl5-porters-subscribe@perl.org</info>
+  <has_cpandir>0</has_cpandir>
+ </cpanid>
+
+All B<list> type entries are ignored by C<PAUSE::Users>.
+
 =head1 NOTES
 
 I started off trying a couple of XML modules, but I was surprised at

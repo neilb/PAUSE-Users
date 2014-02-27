@@ -3,6 +3,8 @@ Revision history for Perl module PAUSE::Users
 0.04 2014-02-27
     - Added CPAN::Index::API::File::Whois and CPAN::Search::Author
       to SEE ALSO.
+    - Added a note about the mailing lists included in 00whois.xml,
+      and that they're ignored by PAUSE::Users
 
 0.03 2013-12-11
     - Added =encoding to pod, since I have UTF-8 in the pod
