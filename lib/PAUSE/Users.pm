@@ -10,7 +10,7 @@ use File::HomeDir;
 use File::Spec::Functions 'catfile';
 use HTTP::Tiny;
 
-my $DISTNAME = '{{ $dist->name }}';
+my $DISTNAME = 'PAUSE-Users';
 my $BASENAME = '00whois.xml';
 
 has 'url' =>

@@ -2,6 +2,8 @@ Revision history for Perl module PAUSE::Users
 
 0.05 2014-03-
     - Added CPAN::Source to SEE ALSO
+    - Stopped using MungeFile::WithData to set $DISTNAME in Users.pm --
+      it was a pain when testing during development.
 
 0.04 2014-02-27
     - Added CPAN::Index::API::File::Whois and CPAN::Search::Author
