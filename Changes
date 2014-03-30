@@ -1,6 +1,9 @@
 Revision history for Perl module PAUSE::Users
 
-0.05 2014-03-
+0.05 2014-03-30
+    - Switched to using MooX::Role::CachedURL to handle the caching of
+      00whois.xml.
+    - Added a live test, which is skipped if you appear to be offline.
     - Added CPAN::Source to SEE ALSO
     - Stopped using MungeFile::WithData to set $DISTNAME in Users.pm --
       it was a pain when testing during development.

@@ -3,25 +3,21 @@ package PAUSE::Users;
 use strict;
 use warnings;
 
+use MooX::Role::CachedURL 0.03;
+
 use Moo;
 use PAUSE::Users::User;
 use PAUSE::Users::UserIterator;
-use File::HomeDir;
-use File::Spec::Functions 'catfile';
-use HTTP::Tiny;
+with 'MooX::Role::CachedURL';
 
-my $DISTNAME = 'PAUSE-Users';
-my $BASENAME = '00whois.xml';
-
-has 'url' =>
+has '+url' =>
     (
-     is      => 'ro',
-     default => sub { return "http://www.cpan.org/authors/$BASENAME"; },
+     default => sub { 'http://www.cpan.org/authors/00whois.xml' },
     );
 
-has 'path' =>
+has '+max_age' =>
     (
-     is => 'rw',
+     default => sub { '1 day' },
     );
 
 sub user_iterator
@@ -29,17 +25,6 @@ sub user_iterator
     my $self = shift;
 
     return PAUSE::Users::UserIterator->new( users => $self );
-}
-
-sub BUILD
-{
-    my $self = shift;
-
-    # If constructor didn't specify a local file, then mirror the file from CPAN
-    if (not $self->path) {
-        $self->path( catfile(File::HomeDir->my_dist_data( $DISTNAME, { create => 1 } ), $BASENAME) );
-        HTTP::Tiny->new()->mirror($self->url, $self->path);
-    }
 }
 
 1;
@@ -54,7 +39,7 @@ PAUSE::Users - interface to PAUSE's users file (00whois.xml)
 
  use PAUSE::Users;
 
- my $users    = PAUSE::Users->new();
+ my $users    = PAUSE::Users->new(max_age => '1 day');
  my $iterator = $users->user_iterator();
 
  while (defined($user = $iterator->next_user)) {
@@ -64,12 +49,15 @@ PAUSE::Users - interface to PAUSE's users file (00whois.xml)
 
 =head1 DESCRIPTION
 
-B<NOTE>: this is very much an alpha release. Any and all feedback appreciated.
-
 PAUSE::Users provides an interface to the C<00whois.xml>
 file produced by the Perl Authors Upload Server (PAUSE).
 This file contains a list of all PAUSE users, with some basic information
 about each user.
+
+By default PAUSE::Users will request the file from PAUSE at most once a day,
+using a locally cached copy otherwise. You can specify the caching time
+using the C<max_age> attribute. You can express the caching time using any
+of the expressions supported by L<Time::Duration::Parse>.
 
 At the moment this module supports a single iterator interface.
 The C<next_user()> method returns an instance of L<PAUSE::Users::User>
