@@ -1,6 +1,9 @@
 Revision history for Perl module PAUSE::Users
 
-0.05 2014-03-30
+0.06 2014-03-30
+    - Now use MooX::Role::CachedURL to grab/cache 00whois.xml
+
+0.05 2014-03-17
     - Switched to using MooX::Role::CachedURL to handle the caching of
       00whois.xml.
     - Added a live test, which is skipped if you appear to be offline.
