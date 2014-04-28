@@ -1,5 +1,12 @@
 Revision history for Perl module PAUSE::Users
 
+0.07 2014-04-29
+    - Updated to work with MooX::Role::CachedURL 0.04 which split the
+      'path' attribute into 'cache_path' and 'path'.
+    - Fixed a bug in ReleaseIterator, which meant that you wouldn't
+      have been able to run two iterators side by side
+      (which wasn't a very likely use case, admittedly).
+
 0.06 2014-03-30
     - Now use MooX::Role::CachedURL to grab/cache 00whois.xml
 

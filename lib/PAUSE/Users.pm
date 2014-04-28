@@ -3,7 +3,7 @@ package PAUSE::Users;
 use strict;
 use warnings;
 
-use MooX::Role::CachedURL 0.03;
+use MooX::Role::CachedURL 0.04;
 
 use Moo;
 use PAUSE::Users::User;
@@ -70,6 +70,38 @@ Here's the simple skeleton for iterating over all PAUSE users:
  while (my $user = $iterator->next_user) {
     # doing something with $user
  }
+
+=head1 Constructor
+
+The constructor takes the following attributes
+
+=over 4
+
+=item * cache_path
+Specify the full path to the local file where the contents of
+00whois.xml should be cached. If not set, an appropriate
+path for your operating system will be generated using L<File::HomeDir>.
+
+If you don't set this attribute, then after instantiating PAUSE::Users
+you can get this attribute to see where the content is being cached.
+
+=item * path
+The full path to your own copy of 00whois.xml.
+If this is provided, then PAUSE::Users won't check to see if
+CPAN's copy is more recent than your file.
+
+=item * max_age
+The maximum age for the cached copy, which is stored in the file
+referenced with the C<cache_path> attribute. If your cached copy
+was updated with the last C<max_age> seconds, then PAUSE::Users
+won't even check whether the CPAN copy has been updated.
+
+You can specify the C<max_age> using any of the notations supported
+by L<Time::Duration::Parse>. It defaults to '1 day'.
+
+=back
+
+=head1 The user object
 
 The user object supports the following methods:
 

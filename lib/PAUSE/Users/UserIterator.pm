@@ -7,21 +7,25 @@ use 5.14.0;
 use Moo;
 use PAUSE::Users::User;
 use autodie;
-use feature 'state';
 use feature 'unicode_strings';
 
 has 'users' => ( is => 'ro' );
+has _fh     => ( is => 'rw' );
 
 sub next_user
 {
     my $self = shift;
     my @fields;
     my $inuser;
-    state $fh;
+    my $fh;
     local $_;
 
-    if (not defined $fh) {
-        open($fh, '<:encoding(UTF-8)', $self->users->path);
+    if (not defined $self->_fh) {
+        $fh = $self->users->open_file();
+        $self->_fh($fh);
+    }
+    else {
+        $fh = $self->_fh;
     }
 
     $inuser = 0;
