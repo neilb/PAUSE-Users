@@ -1,5 +1,7 @@
 package PAUSE::Users;
+
 # ABSTRACT: interface to PAUSE's users file (00whois.xml)
+
 use strict;
 use warnings;
 
