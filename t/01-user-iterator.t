@@ -25,6 +25,7 @@ ok(defined($iterator), 'create user iterator');
 # Construct a string with info
 #-----------------------------------------------------------------------
 my $expected = <<'END_EXPECTED';
+FREW|Arthur Axel "fREW" Schmidt|frioux+cpan@gmail.com|1
 NBERTRAM|Neil Bertram|CENSORED|0
 NEILB|Neil Bowers|neil@bowers.com|1
 NHAINER|Neil Hainer|CENSORED|0

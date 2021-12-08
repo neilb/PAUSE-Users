@@ -12,6 +12,12 @@ use feature 'unicode_strings';
 
 has 'users' => ( is => 'ro' );
 
+my %ENTITY = (quot => '"',
+              gt   => '>',
+              lt   => '<',
+              amp  => '&');
+my ($RE_entity) = map qr/&($_);/, join '|', keys %ENTITY;
+
 sub next_user
 {
     my $self = shift;
@@ -45,6 +51,7 @@ sub next_user
                 next LINE;
             }
 
+            $value =~ s/$RE_entity/$ENTITY{$1}/g;
             push(@fields, $field => $value);
         }
 

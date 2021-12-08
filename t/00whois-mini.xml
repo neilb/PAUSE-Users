@@ -3,6 +3,15 @@
             last-generated='Sat Nov 16 18:19:01 2013 UTC'
             generated-by='/home/puppet/pause/cron/cron-daily.pl'>
  <cpanid>
+  <id>FREW</id>
+  <type>author</type>
+  <fullname>Arthur Axel &quot;fREW&quot; Schmidt</fullname>
+  <email>frioux+cpan@gmail.com</email>
+  <homepage>http://blog.afoolishmanifesto.com</homepage>
+  <introduced>1239658886</introduced>
+  <has_cpandir>1</has_cpandir>
+ </cpanid>
+ <cpanid>
   <id>NBERTRAM</id>
   <type>author</type>
   <fullname>Neil Bertram</fullname>
@@ -16,10 +25,18 @@
   <email>neil@bowers.com</email>
   <has_cpandir>1</has_cpandir>
  </cpanid>
- <cpanid>
+<cpanid>
   <id>NHAINER</id>
   <type>author</type>
   <fullname>Neil Hainer</fullname>
   <email>CENSORED</email>
+ </cpanid>
+ <cpanid>
+  <id>P5P</id>
+  <type>list</type>
+  <asciiname>The Perl5 Porters Mailing List</asciiname>
+  <email>perl5-porters@perl.org</email>
+  <info>Mail perl5-porters-subscribe@perl.org</info>
+  <has_cpandir>0</has_cpandir>
  </cpanid>
 </cpan-whois>
