@@ -28,6 +28,14 @@ sub user_iterator
 {
     my $self = shift;
 
+    if (eval { require PAUSE::Users::UserIterator::LibXML }) {
+        return PAUSE::Users::UserIterator::LibXML->new( users => $self );
+    }
+
+    if (eval { require PAUSE::Users::UserIterator::Twig }) {
+        return PAUSE::Users::UserIterator::Twig->new( users => $self );
+    }
+
     return PAUSE::Users::UserIterator->new( users => $self );
 }
 
