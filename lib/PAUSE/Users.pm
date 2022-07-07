@@ -4,7 +4,6 @@ use strict;
 use warnings;
 
 use Moo;
-use PAUSE::Users::User;
 use PAUSE::Users::UserIterator;
 use File::HomeDir;
 use File::Spec::Functions 'catfile';
