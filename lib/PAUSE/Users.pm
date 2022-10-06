@@ -8,7 +8,6 @@ use warnings;
 use MooX::Role::CachedURL 0.04;
 
 use Moo;
-use PAUSE::Users::User;
 use PAUSE::Users::UserIterator;
 with 'MooX::Role::CachedURL';
 
