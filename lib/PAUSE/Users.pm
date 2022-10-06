@@ -44,7 +44,7 @@ PAUSE::Users - interface to PAUSE's users file (00whois.xml)
  my $users    = PAUSE::Users->new(max_age => '1 day');
  my $iterator = $users->user_iterator();
 
- while (defined($user = $iterator->next_user)) {
+ while (defined(my $user = $iterator->next_user)) {
    print "PAUSE id = ", $user->id, "\n";
    print "Name     = ", $user->fullname, "\n";
  }
