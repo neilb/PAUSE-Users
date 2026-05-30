@@ -10,5 +10,8 @@ has 'has_cpandir'   => (is => 'ro', default => sub { 0 } );
 has 'homepage'      => (is => 'ro');
 has 'id'            => (is => 'ro');
 has 'introduced'    => (is => 'ro');
+has 'nologin'       => (is => 'ro');
+has 'deleted'       => (is => 'ro');
+has 'type'          => (is => 'ro');
 
 1;
