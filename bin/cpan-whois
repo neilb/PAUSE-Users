@@ -6,7 +6,6 @@ use Text::Table::Tiny qw/ generate_table /;
 
 die "usage: $0 <user-id>\n" unless @ARGV > 0;
 
-my $count     = int(@ARGV);
 my %requested = map { (uc($_) => 1) } @ARGV;
 my $users     = PAUSE::Users->new(max_age => '1 day');
 my $iterator  = $users->user_iterator();
@@ -20,9 +19,8 @@ while (defined(my $user = $iterator->next_user)) {
                      $user->asciiname // $user->fullname,
                      "<".($user->email // 'no-email-address').">"]);
         delete $requested{ $user->id };
-        --$count;
     }
-    if ($count == 0) {
+    if (keys %requested == 0) {
         print generate_table(rows => \@rows, style => 'norule',
                              top_and_tail => 1, align => [qw/ r l l /]), "\n";
         exit 0;
