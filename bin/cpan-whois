@@ -19,6 +19,7 @@ while (defined(my $user = $iterator->next_user)) {
         push(@rows, [$user->id.":",
                      $user->asciiname // $user->fullname,
                      "<".($user->email // 'no-email-address').">"]);
+        delete $requested{ $user->id };
         --$count;
     }
     if ($count == 0) {
@@ -28,7 +29,9 @@ while (defined(my $user = $iterator->next_user)) {
     }
 }
 
-die "Not found\n";
+my $missing = join ", ", keys %requested;
+
+die "User(s) not found: $missing\n";
 
 =encoding utf8
 
@@ -73,4 +76,3 @@ This software is copyright (c) 2020 by Neil Bowers <neilb@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
